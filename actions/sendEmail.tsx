@@ -2,8 +2,29 @@
 
 import { sendEmailVerification } from "@/lib/mail";
 
-export async function sendEmail(email: string) {
-    if (!email) return { error: "Email requerido" }
+export type SendEmailResponse = {
+    success: boolean
+    error?: string
+}
 
-    await sendEmailVerification(email)
+export async function sendEmail(email: string): Promise<SendEmailResponse> {
+    if (!email) {
+        return {
+            success: false,
+            error: "Email requerido",
+        }
+    }
+
+    try {
+        await sendEmailVerification(email)
+
+        return {
+            success: true,
+        }
+    } catch (err) {
+        return {
+            success: false,
+            error: "No se pudo enviar el correo",
+        }
+    }
 }
