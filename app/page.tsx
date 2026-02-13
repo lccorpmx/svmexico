@@ -1,65 +1,126 @@
-import Image from "next/image";
+import Image from "next/image"
+import { MapPin, ShoppingCart, Instagram, Facebook } from "lucide-react"
+import { RoadSign } from "@/components/road-sign"
+import { SocialSign } from "@/components/social-sign"
+import { EmailForm } from "@/components/email-form"
+import { ArrowBigUp, CornerUpRight } from "lucide-react"
 
-export default function Home() {
+
+
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen relative overflow-hidden">
+      {/* Sky Video Background */}
+      <div className="fixed inset-0 -z-10">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source
+            src="nubes.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-sky-200/30" />
+      </div>
+
+      <div className="flex flex-col items-center w-full max-w-md mx-auto px-4 py-8 relative">
+        {/* VW Van Front View */}
+        <div className="relative w-64 h-48 md:w-72 md:h-64 z-10">
+          <Image
+            src="/combie.png"
+            alt="Volkswagen Kombi - Sigueme el Viaje"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* Road Section Top */}
+        <div className="relative w-16 -mt-4 z-0">
+          <div className="w-full h-20 bg-[#3a3a3a]  relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 flex flex-col items-center justify-around py-2">
+              <span className="block w-1 h-4 bg-[#f5c542] rounded-full" />
+              <span className="block w-1 h-4 bg-[#f5c542] rounded-full" />
+            </div>
+          </div>
+        </div>
+
+        {/* Ubicacion Button */}
+        <div className="z-10 -mt-1">
+          <RoadSign href="#" icon={<MapPin className="w-7 h-7 text-red-400" />} iconwall={<ArrowBigUp></ArrowBigUp>}>
+            {"UBICACIÓN"}
+          </RoadSign>
+        </div>
+
+        {/* Road Section Mid */}
+        <div className="relative w-16 z-0">
+          <div className="w-full h-12 bg-[#3a3a3a] relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 flex flex-col items-center justify-around py-1">
+              <span className="block w-1 h-3 bg-[#f5c542] rounded-full" />
+            </div>
+          </div>
+        </div>
+
+        {/* Compra Aqui Button */}
+        <div className="z-10 -mt-1">
+          <RoadSign href="#" icon={<ShoppingCart className="w-7 h-7 text-red-400" />} iconwall={<CornerUpRight></CornerUpRight>}>
+            {"COMPRA AQUÍ"}
+          </RoadSign>
+        </div>
+
+        {/* Road Section with Social Signs */}
+        <div className="relative w-16 z-0">
+          <div className="w-full h-32 bg-[#3a3a3a] relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 flex flex-col items-center justify-around py-2">
+              <span className="block w-1 h-4 bg-[#f5c542] rounded-full" />
+              <span className="block w-1 h-4 bg-[#f5c542] rounded-full" />
+              <span className="block w-1 h-4 bg-[#f5c542] rounded-full" />
+            </div>
+          </div>
+
+          {/* Instagram Sign - Left */}
+          <div className="absolute -left-20 top-4">
+            <SocialSign
+              href="https://instagram.com"
+              icon={<Instagram className="w-6 h-6" />}
+              label="Instagram"
+              side="left"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          {/* Facebook Sign - Right */}
+          <div className="absolute -right-20 top-4">
+            <SocialSign
+              href="https://facebook.com"
+              icon={<Facebook className="w-6 h-6" />}
+              label="Facebook"
+              side="right"
+            />
+          </div>
         </div>
-      </main>
-    </div>
-  );
+
+        {/* VW Van Side View */}
+        <div className="relative w-72 h-44 md:w-80 md:h-48 -mt-2 z-10">
+          <Image
+            src="/logosv.png"
+            alt="Volkswagen Kombi lateral"
+            fill
+            className="object-contain"
+          />
+        </div>
+
+        {/* Email Form */}
+        <EmailForm />
+
+        {/* Footer */}
+        <p className="text-[#3a3a3a]/60 text-xs mt-8 font-[var(--font-bangers)] tracking-wider">
+          {"Powered by F()under"}
+        </p>
+      </div>
+    </main>
+  )
 }
